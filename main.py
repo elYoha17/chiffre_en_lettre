@@ -42,7 +42,7 @@ def main() -> None:
 
             input_value = input_value.replace(",", ".")
             input_value = f"{int(input_value):,}".replace(",", " ")
-            print(f"{input_value} :{'moins' if is_negative else ''} {result}")
+            print(f"{input_value} : {'moins ' if is_negative else ''}{result}")
         except Exception as e:
             print(e)
 
