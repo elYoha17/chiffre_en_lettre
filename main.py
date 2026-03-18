@@ -11,7 +11,14 @@ def main() -> None:
             continue
 
         try:
-            magnitudes = group_by_magnitude(int(input_value))
+            try:
+                input_number = int(input_value)
+            except:
+                print(f"'{input_value}' n'est pas un nombre entier.")
+                print()
+                continue
+
+            magnitudes = group_by_magnitude(input_number)
 
             result = ""
             length = len(magnitudes)
@@ -32,8 +39,8 @@ def main() -> None:
             input_value = input_value.replace(",", ".")
             input_value = f"{int(input_value):,}".replace(",", " ")
             print(f"{input_value} : {result}")
-        except:
-            print("Veuillez entrer un nombre entier s'il vous plaît.")
+        except Exception as e:
+            print(e)
 
         print()
 
