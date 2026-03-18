@@ -18,6 +18,10 @@ def main() -> None:
                 print()
                 continue
 
+            is_negative = input_number < 0
+            if is_negative:
+                input_number *= -1
+                
             magnitudes = group_by_magnitude(input_number)
 
             result = ""
@@ -38,7 +42,7 @@ def main() -> None:
 
             input_value = input_value.replace(",", ".")
             input_value = f"{int(input_value):,}".replace(",", " ")
-            print(f"{input_value} : {result}")
+            print(f"{input_value} :{'moins' if is_negative else ''} {result}")
         except Exception as e:
             print(e)
 
