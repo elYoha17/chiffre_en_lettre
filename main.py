@@ -1,5 +1,7 @@
 from constants import words, magnitude_words
 
+max_value = int("9" * 63)
+
 def main() -> None:
     is_running = True
     
@@ -21,6 +23,11 @@ def main() -> None:
             is_negative = input_number < 0
             if is_negative:
                 input_number *= -1
+
+            if input_number > max_value:
+                print("Ce nombre dépasse les limites autorisés.")
+                print()
+                continue
                 
             magnitudes = group_by_magnitude(input_number)
 
