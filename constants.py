@@ -1,4 +1,4 @@
-words = {
+WORDS = {
     0: "zéro",
     1: "un",
     2: "deux",
@@ -27,7 +27,7 @@ words = {
     100: "cent",
 }
 
-magnitude_words = {
+MAGNITUDE_WORDS = {
     0: "",
     1: "mille",
     2: "million",

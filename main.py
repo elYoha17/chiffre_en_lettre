@@ -1,6 +1,6 @@
-from constants import words, magnitude_words
+from constants import WORDS, MAGNITUDE_WORDS
 
-max_value = int("9" * 63)
+MAX_VALUE = int("9" * 63)
 
 
 def main() -> None:
@@ -25,7 +25,7 @@ def main() -> None:
             if is_negative:
                 input_number *= -1
 
-            if input_number > max_value:
+            if input_number > MAX_VALUE:
                 print("Ce nombre dépasse les limites autorisés.")
                 print()
                 continue
@@ -39,11 +39,11 @@ def main() -> None:
                 part = convert_to_words(number)
 
                 if number == i == 1:
-                    part = magnitude_words[i]
+                    part = MAGNITUDE_WORDS[i]
                 elif number == 0 and length > 1:
                     part = ""
                 elif i > 0:
-                    part += "-" + magnitude_words[i]
+                    part += "-" + MAGNITUDE_WORDS[i]
 
                 if part != "":
                     result += ("-" + part) if result != "" else part
@@ -69,29 +69,29 @@ def convert_to_words(num: int) -> str:
     if not (0 <= num < 1000):
         raise Exception("Erreur : Le nombre doit être compris entre 0 et 999.")
 
-    if num in words:
-        return words[num]
+    if num in WORDS:
+        return WORDS[num]
 
     hundred, ten, unit = [int(digit) for digit in group_by_magnitude(num)[0]]
     result = ""
 
     if hundred == 1:
-        result += words[100]
+        result += WORDS[100]
     elif hundred > 1:
-        result += words[hundred] + "-" + words[100]
+        result += WORDS[hundred] + "-" + WORDS[100]
 
-    if ten != 0 and ten * 10 + unit in words:
-        result += ("" if result == "" else "-") + words[ten * 10 + unit]
+    if ten != 0 and ten * 10 + unit in WORDS:
+        result += ("" if result == "" else "-") + WORDS[ten * 10 + unit]
         return result
 
     if ten > 0:
-        result += ("" if result == "" else "-") + words[ten * 10]
+        result += ("" if result == "" else "-") + WORDS[ten * 10]
 
     if unit == 1 and not (ten == 8 or ten == 0):
         result += "-et"
 
     if unit > 0:
-        result += ("" if result == "" else "-") + words[unit]
+        result += ("" if result == "" else "-") + WORDS[unit]
 
     return result
 
