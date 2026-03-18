@@ -12,7 +12,7 @@ def main() -> None:
 
         try:
             magnitudes = group_by_magnitude(int(input_value))
-            
+
             result = ""
             length = len(magnitudes)
             for i in reversed(range(length)):
@@ -61,17 +61,17 @@ def convert_to_words(num: int) -> str:
         num += words[hundred] + "-" + words[100]
         
     if ten != 0 and ten * 10 + unit in words:
-        num += ("" if hundred == 0 else "-") + words[ten * 10 + unit]
+        num += ("" if num == "" else "-") + words[ten * 10 + unit]
         return num
     
     if ten > 0:
-        num += ("" if hundred == 0 else "-") + words[ten * 10]
+        num += ("" if num == "" else "-") + words[ten * 10]
         
     if unit == 1 and not (ten == 8 or ten == 0):
         num += "-et"
 
     if unit > 0:
-        num += ("" if hundred == ten == 0 else "-") + words[unit]
+        num += ("" if num == "" else "-") + words[unit]
 
     return num
     
