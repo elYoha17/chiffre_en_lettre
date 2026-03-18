@@ -53,27 +53,27 @@ def convert_to_words(num: int) -> str:
         return words[num]
 
     hundred, ten, unit = [int(digit) for digit in group_by_magnitude(num)[0]]
-    num = ""
+    result = ""
 
     if hundred == 1:
-        num += words[100]
+        result += words[100]
     elif hundred > 1:
-        num += words[hundred] + "-" + words[100]
+        result += words[hundred] + "-" + words[100]
         
     if ten != 0 and ten * 10 + unit in words:
-        num += ("" if num == "" else "-") + words[ten * 10 + unit]
-        return num
+        result += ("" if result == "" else "-") + words[ten * 10 + unit]
+        return result
     
     if ten > 0:
-        num += ("" if num == "" else "-") + words[ten * 10]
+        result += ("" if result == "" else "-") + words[ten * 10]
         
     if unit == 1 and not (ten == 8 or ten == 0):
-        num += "-et"
+        result += "-et"
 
     if unit > 0:
-        num += ("" if num == "" else "-") + words[unit]
+        result += ("" if result == "" else "-") + words[unit]
 
-    return num
+    return result
     
 if __name__ == "__main__":
     main()
