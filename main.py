@@ -47,7 +47,6 @@ def main() -> None:
                 if part != "":
                     result += ("-" + part) if result != "" else part
 
-            input_value = input_value.replace(",", ".")
             input_value = f"{input_number:,}".replace(",", " ")
             print(f"{input_value} : {'moins ' if is_negative else ''}{result}")
         except Exception as e:
