@@ -48,6 +48,8 @@ def main() -> None:
                 if part != "":
                     result += ("-" + part) if result != "" else part
 
+            result = result.replace("cents-", "cent-")
+
             input_value = f"{input_number:,}".replace(",", " ")
             print(f"{input_value} : {'moins ' if is_negative else ''}{result}")
         except Exception as e:
@@ -78,7 +80,7 @@ def convert_to_words(num: int) -> str:
     if hundred == 1:
         result += WORDS[100]
     elif hundred > 1:
-        result += WORDS[hundred] + "-" + WORDS[100]
+        result += WORDS[hundred] + "-" + WORDS[100] + "s"
 
     if ten != 0 and ten * 10 + unit in WORDS:
         result += ("" if result == "" else "-") + WORDS[ten * 10 + unit]
