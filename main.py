@@ -1,6 +1,6 @@
 from constants import WORDS, MAGNITUDE_WORDS
 
-MAX_VALUE = int("9" * 63)
+MAX_VALUE = int("9" * 66)
 
 
 def main() -> None:
