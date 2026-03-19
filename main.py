@@ -43,12 +43,12 @@ def main() -> None:
                 elif number == 0 and length > 1:
                     part = ""
                 elif i > 0:
-                    part += "-" + MAGNITUDE_WORDS[i] + ("s" if number > 1 and i > 1 else "")
+                    part += " " + MAGNITUDE_WORDS[i] + ("s" if number > 1 and i > 1 else "")
 
                 if part != "":
-                    result += ("-" + part) if result != "" else part
+                    result += (" " + part) if result != "" else part
 
-            result = result.replace("cents-", "cent-")
+            result = result.replace("cents ", "cent ")
 
             input_value = f"{input_number:,}".replace(",", " ")
             print(f"{input_value} : {'moins ' if is_negative else ''}{result}")
@@ -80,22 +80,24 @@ def convert_to_words(num: int) -> str:
     if hundred == 1:
         result += WORDS[100]
     elif hundred > 1:
-        result += WORDS[hundred] + "-" + WORDS[100] + "s"
+        result += WORDS[hundred] + " " + WORDS[100] + "s"
 
     if ten != 0 and ten * 10 + unit in WORDS:
-        result += ("" if result == "" else "-") + WORDS[ten * 10 + unit]
+        result += ("" if result == "" else " ") + WORDS[ten * 10 + unit]
         return result
     
     if ten == 8:
-        result += ("" if result == "" else "-") + WORDS[4] + "-" + WORDS[20] + ("s" if unit == 0 else "")
+        result += ("" if result == "" else " ") + WORDS[4] + "-" + WORDS[20] + ("s" if unit == 0 else "")
     elif ten > 0:
-        result += ("" if result == "" else "-") + WORDS[ten * 10]
+        result += ("" if result == "" else " ") + WORDS[ten * 10]
 
     if unit == 1 and not (ten == 8 or ten == 0):
         result += "-et"
 
-    if unit > 0:
-        result += ("" if result == "" else "-") + WORDS[unit]
+    if result == "":
+        result = WORDS[unit]
+    elif unit > 0:
+        result += ("-" if ten > 0 else " ") + WORDS[unit]
 
     return result
 
