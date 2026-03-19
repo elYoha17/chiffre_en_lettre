@@ -43,7 +43,7 @@ def main() -> None:
                 elif number == 0 and length > 1:
                     part = ""
                 elif i > 0:
-                    part += "-" + MAGNITUDE_WORDS[i]
+                    part += "-" + MAGNITUDE_WORDS[i] + ("s" if number > 1 and i > 1 else "")
 
                 if part != "":
                     result += ("-" + part) if result != "" else part
