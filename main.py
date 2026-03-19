@@ -83,8 +83,10 @@ def convert_to_words(num: int) -> str:
     if ten != 0 and ten * 10 + unit in WORDS:
         result += ("" if result == "" else "-") + WORDS[ten * 10 + unit]
         return result
-
-    if ten > 0:
+    
+    if ten == 8:
+        result += ("" if result == "" else "-") + WORDS[4] + "-" + WORDS[20] + ("s" if unit == 0 else "")
+    elif ten > 0:
         result += ("" if result == "" else "-") + WORDS[ten * 10]
 
     if unit == 1 and not (ten == 8 or ten == 0):

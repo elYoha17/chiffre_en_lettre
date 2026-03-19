@@ -22,7 +22,6 @@ WORDS = {
     50: "cinquante",
     60: "soixante",
     70: "septante",
-    80: "quatre-vingts",
     90: "nonante",
     100: "cent",
 }
